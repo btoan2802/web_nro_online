@@ -518,7 +518,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
             <a href="BXH" type="submit" class="btn btn-lg btn-dark mx-2 auto-resize" style="<?= $nutdangnhapdangkiTO; ?>"
               name="submit" onmouseover="<?= $onmouseover; ?>" onmouseout="<?= $onmouseout; ?>">
               <i class="fa-solid fa-ranking-star"></i> Bảng Xếp Hạng</a>
-            <a href="napATM" type="submit" class="btn btn-lg btn-dark mx-2 auto-resize"
+            <a href="/napatm.php" type="submit" class="btn btn-lg btn-dark mx-2 auto-resize"
               style="<?= $nutdangnhapdangkiTO; ?>" name="submit" onmouseover="<?= $onmouseover; ?>"
               onmouseout="<?= $onmouseout; ?>"><i class="fa fa-money"></i> Nạp Coin</a>
           </div> -->

@@ -64,7 +64,7 @@ include '../head.php';
                                                                 echo "<tr>
                     <td>" . $stt . "</td>
                     <td>" . $row_xem_item['username'] . "</td>
-                    <td>" . md5($row_xem_item['password']) . "</td>
+                    <td>" . $row_xem_item['password'] . "</td>
                     <td>" . number_format($row_xem_item["vnd"], 0, '.', ',') . "</td>
                     <td>" . $active . "</td>
                     <td>" . $status . "</td>
