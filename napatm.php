@@ -155,10 +155,10 @@ if ($resultt->num_rows > 0) {
 </style>
 
 <div class="align-items-center my-2 d-flex justify-content-center">
-    <a href="napATM" style="margin-right: 10px;">
+    <a href="/napatm.php" style="margin-right: 10px;">
         <img src="/public/images/icon/ATM.png" alt="Nạp ATM"
             style="width: 110px; height: 110px; border-radius: 10px; pointer-events: none;" class="btn-img"></a>
-    <a href="napCARD" style="margin-right: 10px;">
+    <a href="/napthe.php" style="margin-right: 10px;">
         <img src="/public/images/icon/Card.png" alt="Nạp Thẻ"
             style="width: 100px; height: 100px; border-radius: 10px; pointer-events: none;" class="btn-img"></a>
 </div>
@@ -181,7 +181,7 @@ if ($resultt->num_rows > 0) {
                             <th><span id="noidung">
                                     <strong class="red-text">
                                         <span id="Description"><?php echo $MEMO_PREFIX . $accountId; ?></span>
-                                        <button class="copy-button" onclick="copyDesciptionNumber()">Copy</button>
+                                        <button type="button" class="copy-button" onclick="copyDesciptionNumber()">Copy</button>
                                     </strong>
                                 </span></th>
                         </tr>
@@ -189,7 +189,7 @@ if ($resultt->num_rows > 0) {
                             <th><span class="label">Số tài khoản: </span></th>
                             <td><span id="stk">
                                     <span id="accountNumber"><?php echo $stk; ?></span>
-                                    <button class="copy-button" onclick="copyAccountNumber()">Copy</button>
+                                    <button type="button" class="copy-button" onclick="copyAccountNumber()">Copy</button>
                                 </span></td>
                         </tr>
                         <tr>
@@ -205,15 +205,14 @@ if ($resultt->num_rows > 0) {
                                 </span></td>
                         </tr>
 
-                        <img src="https://img.vietqr.io/image/MB-<?php echo $stk; ?>-qr_only.png?amount=<AMOUNT>&addInfo=<?php echo $MEMO_PREFIX . $accountId; ?>
+                        <img src="https://img.vietqr.io/image/TPB-<?php echo $stk; ?>-qr_only.png?amount=<AMOUNT>&addInfo=<?php echo $MEMO_PREFIX . $accountId; ?>"
                             " style="max-width: 25%; height: auto; margin: 20px auto;" alt="QR Code">
 
                     </table>
                 </div>
 
                 <br>
-                <button class="copy-button" onclick="window.location.href = 'napATM'">Bấm tại đây để load lại
-                    trang!</button>
+                <button type="button" class="copy-button" onclick="window.location.href = '/napatm.php'">Bấm tại đây để load lại trang!</button>
                 <div style="color: dodgerblue; font-weight: bold; font-size: 15px;">*Lưu ý : Chuyển Khoản đúng nội dung
                     xong Vui lòng load lại trang hiện tại đến khi được cộng tiền</div>
             </div>
