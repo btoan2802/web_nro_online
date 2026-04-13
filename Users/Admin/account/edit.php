@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="card-body tryal row">
                                         <div class="col-xl-7 col-sm-6">
                                             <h2>CHỈNH SỬA ACCOUNT</h2>
-                                            <span>CHỈNH SỬA ACCOUNT</span>
+                                            <span> CHỈNH SỬA - ACCOUNT</span>
                                         </div>
                                     </div>
                                 </div>
