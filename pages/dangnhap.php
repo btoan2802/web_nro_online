@@ -11,36 +11,13 @@ if (isset($_SESSION['logger']['username'])) {
 if (isset($_POST['submit']) && $_POST['username'] != '' && $_POST['password'] != '') {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$captcha = $_POST['g-recaptcha-response'];
+	$username = mysqli_real_escape_string($config, $username);
+$password = mysqli_real_escape_string($config, $password);
 
-	if (!$captcha) {
-		$thongbao = 'Hãy xác minh captcha!';
-		$script = '
-			var thongbao = ' . json_encode($thongbao) . ';
-			if (thongbao !== "") {
-				Swal.fire({
-					title: "Thất Bại",
-					html: thongbao,
-					icon: "error",
-					confirmButtonText: "Đóng",
-					allowOutsideClick: () => Swal.getConfirmButton().click()
-				}).then((result) => {
-					if (result.isConfirmed) {
-						window.location.href = "Login";
-					}
-				});
-			}
-			';
+$sql = "SELECT * FROM account WHERE username = '$username' AND password = '$password'";
+$account = mysqli_query($config, $sql);
 
-		echo '<script>' . $script . '</script>';
-	} else {
-		$username = mysqli_real_escape_string($config, $username);
-		$password = mysqli_real_escape_string($config, $password);
-
-		$sql = "SELECT * FROM account WHERE username = '$username' AND password = '$password'";
-		$account = mysqli_query($config, $sql);
-
-		if (mysqli_num_rows($account) > 0) {
+if (mysqli_num_rows($account) > 0) {
 
 			$_SESSION['logger']['username'] = $username;
 			$_SESSION['logger']['password'] = $password;
@@ -106,9 +83,6 @@ if (isset($_POST['submit']) && $_POST['username'] != '' && $_POST['password'] !=
 
 			<span style="color: red; font-size: 12px; font-weight: bold;">
 			</span>
-			<center>
-				<div class="g-recaptcha" data-sitekey="<?= $site_key; ?>" style="margin:10px;"></div>
-			</center>
 			<div class="text-center mt-1">
 				<button class="btn btn-lg btn-dark btn-block" style="<?= $nutdangnhapdangkiTO; ?>" type="submit"
 					name="submit" onmouseover="<?= $onmouseover; ?>" onmouseout="<?= $onmouseout; ?>">Đăng Nhập</button>
