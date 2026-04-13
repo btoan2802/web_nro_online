@@ -107,8 +107,14 @@ if ($resultt->num_rows > 0) {
             <h1 class="h3 mb-3 font-weight-normal text-white" style="padding-top: 10px; font-weight: bold; text-shadow: 2px 2px 2px #000;">THÔNG TIN CHUYỂN KHOẢN</h1>
         </center>
         <div class="container-atm">
+            <div class="mb-3 text-start">
+                <label class="form-label font-weight-bold" style="color: #5E17EB;">1. Nhập số tiền cần nạp:</label>
+                <input type="number" id="naptien_amount" class="form-control" placeholder="Ví dụ: 50000" oninput="updateQR()">
+                <small class="text-muted">* Để trống nếu muốn quét mã không số tiền.</small>
+            </div>
+
             <div class="value">
-                <img src="https://img.vietqr.io/image/TPB-<?php echo $stk; ?>-compact2.png?amount=0&addInfo=<?php echo urlencode($transferContent); ?>&accountName=<?php echo urlencode($chutaikhoan); ?>"
+                <img id="qr-image" src="https://img.vietqr.io/image/TPB-<?php echo $stk; ?>-compact2.png?amount=0&addInfo=<?php echo urlencode($transferContent . $accountId); ?>&accountName=<?php echo urlencode($chutaikhoan); ?>"
                      alt="QR TPBank" style="max-width: 260px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #fff;">
                 
                 <table class="atm-table">
@@ -126,21 +132,34 @@ if ($resultt->num_rows > 0) {
                     </tr>
                     <tr>
                         <td class="label">Nội dung CK:</td>
-                        <td><b style="color: red; font-size: 20px;" id="transfer-content"><?php echo htmlspecialchars($transferContent); ?></b></td>
+                        <td><b style="color: red; font-size: 24px;" id="transfer-content"><?php echo htmlspecialchars($transferContent . $accountId); ?></b></td>
                     </tr>
                 </table>
             </div>
 
             <div class="mt-3">
                 <button type="button" class="copy-button" onclick="copyText('<?php echo $stk; ?>')">Copy STK</button>
-                <button type="button" class="copy-button" onclick="copyText('<?php echo $transferContent; ?>')">Copy Nội Dung</button>
+                <button type="button" class="copy-button" onclick="copyText('<?php echo $transferContent . $accountId; ?>')">Copy Nội Dung</button>
                 <button type="button" class="copy-button" onclick="window.location.reload()">Load Lại Trang</button>
             </div>
 
             <div style="color: #d32f2f; font-weight: bold; font-size: 14px; margin-top: 15px; background: #fff; padding: 10px; border-radius: 5px;">
-                *Lưu ý: Chuyển khoản đúng nội dung. Sau khi chuyển thành công, vui lòng Load lại trang đến khi hệ thống cộng tiền.
+                *Lưu ý: Chuyển khoản đúng nội dung <b><?php echo $transferContent . $accountId; ?></b>. Sau khi chuyển thành công, vui lòng Load lại trang hoặc chờ hệ thống tự động cộng tiền.
             </div>
         </div>
+
+        <script>
+        function updateQR() {
+            var amount = document.getElementById('naptien_amount').value;
+            if (amount < 0) amount = 0;
+            var baseUrl = "https://img.vietqr.io/image/TPB-<?php echo $stk; ?>-compact2.png";
+            var memo = "<?php echo urlencode($transferContent . $accountId); ?>";
+            var name = "<?php echo urlencode($chutaikhoan); ?>";
+            
+            var newSrc = baseUrl + "?amount=" + amount + "&addInfo=" + memo + "&accountName=" + name;
+            document.getElementById('qr-image').src = newSrc;
+        }
+        </script>
     </div>
 </div>
 
