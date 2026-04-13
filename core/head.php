@@ -488,7 +488,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
 
 
       <?php if (sql::isAdmin()) { ?>
-        <a href="ADMIN" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
+        <a href="/Users/Admin/index.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
           <i class="fa-solid fa-user-gear"></i> TRANG ADMIN</a> <br>
       <?php } ?>
 
