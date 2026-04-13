@@ -1,8 +1,7 @@
 <?php
 class until {
     public static function domain($links) {
-        $domain = 'http://'.$_SERVER['HTTP_HOST'].'/'.$links;
-        return $domain;
+        return '/' . ltrim($links, '/');
     }
     
     public static function avatar() {

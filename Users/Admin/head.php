@@ -762,5 +762,4 @@ echo '<!DOCTYPE html>
 				</div>
 			</div>
         </div>';
-    include 'end.php';
 ?>
