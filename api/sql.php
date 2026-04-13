@@ -1,6 +1,6 @@
 <?php
-include 'connect.php';
-include 'until.php';
+include_once __DIR__ . '/connect.php';
+include_once __DIR__ . '/until.php';
 class sql {
      public static function SelectTop10($tableName, $orderColumn , $number) {
     global $conn;
