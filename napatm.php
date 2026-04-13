@@ -178,7 +178,7 @@ function copyText(text) {
                 </thead>
                 <tbody>
                     <?php
-                    $resultk = $config->query("SELECT * FROM mb_bank WHERE username = '$username' ORDER BY id DESC");
+                    $resultk = $config->query("SELECT * FROM mb_bank WHERE username = '$username' ORDER BY tid DESC");
                     $stt = 1;
                     if ($resultk && $resultk->num_rows > 0) {
                         while ($rowk = $resultk->fetch_assoc()) {

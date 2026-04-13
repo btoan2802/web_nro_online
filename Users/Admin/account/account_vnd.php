@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$row = sql::Select("account", "username", $_POST['name']);
 		if ($row) {
 			sql::update("account", "vnd", $row['vnd'] + $_POST['vnd'], "id", $row['id']);
-			sql::update("account", "tongnap", $row['tongnap'] + $_POST['tongnap'], "id", $row['id']);
+			sql::update("account", "tongnap", $row['tongnap'] + $_POST['vnd'], "id", $row['id']);
 			echo '
  <script>
 alert("Cộng vnd thành công");
