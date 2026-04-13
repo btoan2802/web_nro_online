@@ -61,14 +61,6 @@ require_once('core/head.php');
 	}
 </style>
 <script>
-	// document.addEventListener("keydown", function (event) {
-	// 	if (event.ctrlKey) {
-	// 		event.preventDefault();
-	// 	}
-	// 	if (event.keyCode == 123) {
-	// 		event.preventDefault();
-	// 	}
-	// });
 	function toggleInfo(id) {
 		var info = document.getElementById('info' + id);
 		info.classList.toggle('active');

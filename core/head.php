@@ -468,12 +468,12 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
 
 
     <?php if ($_SESSION['logger']['username']) { ?>
-      <a href="DoiMatKhau" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
+      <a href="/pages/doimatkhau.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-address-card"></i> Đổi Mật Khẩu </a>
 
       <!-- <a href="KichHoat" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-check-circle-o"></i> Kích Hoạt </a> -->
-      <a href="Profile" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
+      <a href="/pages/profile.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-user-plus"></i> Nhân vật </a>
       <!-- <a href="/checkIPclone.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-credit-card"></i> Kiểm Tra IP </a>
@@ -483,7 +483,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
         <i class="fa-solid fa-gift"></i> Danh Sách Giftcode Riêng</a> -->
       <!-- <a href="NhanGift" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
       <i class="fa-solid fa-gift"></i> Nhận Giftcode </a> -->
-      <a href="Logout" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
+      <a href="/pages/dangxuat.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-sign-out"></i> Đăng Xuất </a> <br>
 
 
@@ -493,10 +493,10 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
       <?php } ?>
 
     <?php } else { ?>
-      <a href="Login" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+      <a href="/pages/dangnhap.php" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
         <img src="/public/images/icon/dangnhap.png" alt="Đăng nhập" style="max-width: 160px; pointer-events: none;"
           class="btn-img"></a>
-      <a href="Register" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+      <a href="/pages/dangky.php" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
         <img src="/public/images/icon/dangky.png" alt="Đăng ký" style="max-width: 160px; pointer-events: none;"
           class="btn-img"></a>
     <?php } ?>
@@ -507,10 +507,10 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
         <?php if ($_SESSION['logger']['username']) { ?>
 
           <div class="align-items-center my-2 d-flex justify-content-center image-container">
-            <a href="napATM" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+            <a href="/napatm.php" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
               <img src="/public/images/icon/napcoin.png" alt="Nạp Coin" style="max-width: 200px; pointer-events: none;"
                 class="btn-img"></a>
-            <a href="BXH" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+            <a href="/bxh.php" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
               <img src="/public/images/icon/bxh.png" alt="Bảng xếp hạng" style="max-width: 200px; pointer-events: none;"
                 class="btn-img"></a>
           </div>
@@ -524,10 +524,10 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
           </div> -->
         <?php } else { ?>
           <div class="align-items-center my-2 d-flex justify-content-center image-container">
-            <a href="napATM" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+            <a href="/napatm.php" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
               <img src="/public/images/icon/napcoin.png" alt="Trang Chủ" style="max-width: 180px; pointer-events: none;"
                 class="btn-img"></a>
-            <a href="BXH" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+            <a href="/bxh.php" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
               <img src="/public/images/icon/bxh.png" alt="Box Zalo" style="max-width: 180px; pointer-events: none;"
                 class="btn-img"></a>
           </div>

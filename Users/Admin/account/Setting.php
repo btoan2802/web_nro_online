@@ -121,11 +121,4 @@ setTimeout(function() {
 </div>
 </div>
 </div>
-<div class="footer">
-	<div class="copyright">
-	<p>Developed by VietNguyen</p>
-	</div>
-</div>
-</body>
-
-</html>
+<?php include '../end.php'; ?>
