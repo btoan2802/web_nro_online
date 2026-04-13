@@ -13,6 +13,10 @@ $pass_sv = "toanhotface";
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-$conn = new mysqli($ip_sv, $user_sv, $pass_sv,$dbname_sv);
-$conn->set_charset("utf8mb4");    
+try {
+    $conn = new mysqli($ip_sv, $user_sv, $pass_sv, $dbname_sv);
+    $conn->set_charset("utf8mb4");
+} catch (Exception $e) {
+    $conn = false;
+}
 ?>

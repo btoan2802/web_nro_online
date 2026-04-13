@@ -1,36 +1,36 @@
 <?php
 include __DIR__ . '/../../core/config.php';
 include 'head.php';
-$data = "SELECT SUM(player.tongnap) AS total_vnd
+$data = "SELECT SUM(account.tongnap) AS total_vnd
 		FROM player INNER JOIN account ON account.id = player.account_id
 		WHERE account.is_admin = 0;";
 $result = mysqli_query($config, $data);
-$row = mysqli_fetch_array($result);
+$row = $result ? mysqli_fetch_array($result) : ['total_vnd' => 0];
 
 $dataf = "SELECT SUM(amount) AS atm FROM mb_bank WHERE status = 1;";
 $resultf = mysqli_query($config, $dataf);
-$rowf = mysqli_fetch_array($resultf);
+$rowf = $resultf ? mysqli_fetch_array($resultf) : ['atm' => 0];
 
 $datak = "SELECT COUNT(*) as total FROM account WHERE active = 1 AND account.is_admin = 0";
 $resultk = mysqli_query($config, $datak);
-$rowk = mysqli_fetch_array($resultk);
+$rowk = $resultk ? mysqli_fetch_array($resultk) : ['total' => 0];
 $totalActiveAccounts = $rowk['total'];
 
 $data1 = "SELECT SUM(amount) AS total_the FROM trans_log WHERE status = 1;";
 $result1 = mysqli_query($config, $data1);
-$row1 = mysqli_fetch_array($result1);
+$row1 = $result1 ? mysqli_fetch_array($result1) : ['total_the' => 0];
 
 $darut = 0;
 $tongdoangthu = ($row1['total_the'] * 80 / 100) + $rowf['atm'] - $darut;
 
 $dataac = "SELECT COUNT(*) as total_player FROM player";
 $resultac = mysqli_query($config, $dataac);
-$rowac = mysqli_fetch_array($resultac);
+$rowac = $resultac ? mysqli_fetch_array($resultac) : ['total_player' => 0];
 $totalPlayer = $rowac['total_player'];
 
 $datatt = "SELECT COUNT(*) as total_acc FROM account WHERE account.ban = 0 AND account.is_admin = 0";
 $resulttt = mysqli_query($config, $datatt);
-$rowtt = mysqli_fetch_array($resulttt);
+$rowtt = $resulttt ? mysqli_fetch_array($resulttt) : ['total_acc' => 0];
 $totalAccounts = $rowtt['total_acc'];
 ?>
 <!--**********************************

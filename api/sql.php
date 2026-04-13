@@ -4,6 +4,7 @@ include_once __DIR__ . '/until.php';
 class sql {
      public static function SelectTop10($tableName, $orderColumn , $number) {
     global $conn;
+    if (!$conn) return null;
     $sql = "SELECT * FROM $tableName ORDER BY $orderColumn DESC LIMIT $number";
     
     if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -25,6 +26,7 @@ class sql {
 
 public static function SelectTop10Json($tableName, $orderColumn, $index, $number) {
     global $conn;
+    if (!$conn) return null;
     
     $sql = "SELECT * FROM $tableName 
             ORDER BY CAST(JSON_EXTRACT($orderColumn, '$[$index]') AS UNSIGNED) DESC 
@@ -53,6 +55,7 @@ public static function SelectTop10Json($tableName, $orderColumn, $index, $number
      
      public static function Select($tableName, $columnName, $columnValue) {
     global $conn;
+    if (!$conn) return null;
     $sql = "SELECT * FROM $tableName WHERE $columnName = ?";
     if ($stmt = mysqli_prepare($conn, $sql)) {
         mysqli_stmt_bind_param($stmt, "s", $columnValue);
@@ -70,6 +73,7 @@ public static function SelectTop10Json($tableName, $orderColumn, $index, $number
  
  public static function SelectWithIndex($tableName, $columnName, $columnValue, $index) {
     global $conn;
+    if (!$conn) return null;
     $sql = "SELECT * FROM $tableName WHERE $columnName = ? LIMIT 1 OFFSET ?";
     if ($stmt = mysqli_prepare($conn, $sql)) {
         mysqli_stmt_bind_param($stmt, "si", $columnValue, $index);
@@ -87,6 +91,7 @@ public static function SelectTop10Json($tableName, $orderColumn, $index, $number
  
 public static function Select1($tableName, $conditions) {
     global $conn;
+    if (!$conn) return null;
     try {
         $sql = "SELECT * FROM $tableName WHERE ";
         $types = "";
@@ -125,6 +130,7 @@ public static function Select1($tableName, $conditions) {
  
  public static function insert($FROM, $columns, $values) {
     global $conn;
+    if (!$conn) return false;
     $stmt = $conn->prepare("INSERT INTO $FROM ($columns) VALUES ($values)");
     $stmt->execute();
     return $conn; 
@@ -134,6 +140,7 @@ public static function Select1($tableName, $conditions) {
 
 public static function update($tableName, $setColumn, $newValue, $whereColumn, $whereValue) {
     global $conn;
+    if (!$conn) return;
     $sql = "UPDATE $tableName SET $setColumn = ? WHERE $whereColumn = ?";
     if ($stmt = mysqli_prepare($conn, $sql)) {
         mysqli_stmt_bind_param($stmt, "ss", $newValue, $whereValue);
@@ -147,6 +154,7 @@ public static function update($tableName, $setColumn, $newValue, $whereColumn, $
 
 public static function delete($tableName, $whereColumn, $whereValue) {
     global $conn;
+    if (!$conn) return;
     $sql = "DELETE FROM $tableName WHERE $whereColumn = ?";
     if ($stmt = mysqli_prepare($conn, $sql)) {
         mysqli_stmt_bind_param($stmt, "s", $whereValue);
@@ -176,6 +184,7 @@ public static function isAdmin() {
 public static function Tong($num , $tableName, $conditions) {
 
 global $conn;
+    if (!$conn) return 0;
     try {
         $sql = "SELECT COUNT($num) AS total FROM $tableName WHERE ";
         $types = "";
