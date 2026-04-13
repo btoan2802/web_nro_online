@@ -1,19 +1,4 @@
-# secret config
-cauhinh.php
-connect.php
-core/config.php
-api/config.php
-api/connect.php
-
-# logs
-card.log
-ajax/error_log
-*.log
-
 # local/editor
 .vscode/
 Thumbs.db
 .DS_Store
-
-# optional database dump
-thegioinro.sql
