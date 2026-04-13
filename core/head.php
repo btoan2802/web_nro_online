@@ -63,28 +63,7 @@ if ($result->num_rows > 0) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
   <!-- Captcha Goole -->
   <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-  <script>
-    const redirectLink = 'trang-chu';
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-        window.location.href = redirectLink;
-        event.preventDefault();
-      }
-    });
-
-    document.addEventListener('contextmenu', function (event) {
-      window.location.href = redirectLink;
-      event.preventDefault();
-    });
-    document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && event.key === 'u') {
-        window.location.href = redirectLink;
-        event.preventDefault();
-      }
-    });
-
-    // setInterval(blockDevTools, 1000);
-  </script>
+  
   <style type="text/css">
     #cssweb {
       background-color: black;
