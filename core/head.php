@@ -582,8 +582,8 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
               <h5 class="card-title"><i class="fa-brands fa-apple"></i> Phiên Bản IOS </h5>
               <p class="card-text">Nhấn vào đây để tải game cho điện thoại Iphone của bạn.</p>
               <div class="d-flex justify-content-center">
-                <a class="btn btn-info1 me-1 mt-1" href="<?= $testflight; ?>"><i class="fa fa-download"></i>
-                  TestFlight</a>
+                <!-- <a class="btn btn-info1 me-1 mt-1" href="<?= $testflight; ?>"><i class="fa fa-download"></i>
+                  TestFlight</a> -->
                 <a class="btn btn-info1 me-1 mt-1" href="<?= $ios; ?>"><i class="fa fa-download"></i> File IPA</a>
 
               </div>
@@ -591,7 +591,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
           </div>
         </div>
 
-        <!--<div class=" mt-2">
+        <div class=" mt-2">
           <div class="card download-bg suggestion" style="border: 2px solid black; border-radius:30px;">
             <div class="card-body text-center">
               <h5 class="card-title"><i class="fa-brands fa-java"></i> Phiên Bản Java</h5>
@@ -600,7 +600,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
                 Tải Jar</a>
             </div>
           </div>
-        </div>-->
+        </div>
 
       </div>
     </div>
