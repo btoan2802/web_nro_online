@@ -500,13 +500,13 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
         <i class="fa-solid fa-address-card"></i> Đổi Mật Khẩu </a>
 
       <!-- <a href="KichHoat" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-        <i class="fa fa-check-circle-o"></i> Kích Hoạt </a> -->
+        <i class="fa-regular fa-circle-check"></i> Kích Hoạt </a> -->
       <a href="/pages/profile.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa-solid fa-user"></i> Nhân vật </a>
       <!-- <a href="/checkIPclone.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-        <i class="fa fa-credit-card"></i> Kiểm Tra IP </a>
+        <i class="fa-solid fa-credit-card"></i> Kiểm Tra IP </a>
       <a href="/lichsunap.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-        <i class="fa fa-credit-card"></i> Lịch Sử Nạp </a> -->
+        <i class="fa-solid fa-credit-card"></i> Lịch Sử Nạp </a> -->
       <!-- <a href="Giftcode" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa-solid fa-gift"></i> Danh Sách Giftcode Riêng</a> -->
       <!-- <a href="NhanGift" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
@@ -586,7 +586,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
                   <i class="fa-solid fa-download"></i> Tải về ngay
                 </a>
                 <!-- <a class="btn btn-info1 me-1 mt-1" href="<?= $adrpro; ?>">
-                  <i class="fa fa-download"></i> Cấu hình cao
+                  <i class="fa-solid fa-download"></i> Cấu hình cao
                 </a> -->
               </div>
             </div>
@@ -610,7 +610,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
               <h5 class="card-title"><i class="fa-brands fa-apple"></i> Phiên Bản IOS </h5>
               <p class="card-text">Nhấn vào đây để tải game cho điện thoại Iphone của bạn.</p>
               <div class="d-flex justify-content-center">
-                <!-- <a class="btn btn-info1 me-1 mt-1" href="<?= $testflight; ?>"><i class="fa fa-download"></i>
+                <!-- <a class="btn btn-info1 me-1 mt-1" href="<?= $testflight; ?>"><i class="fa-solid fa-download"></i>
                   TestFlight</a> -->
                 <a class="btn btn-info1 me-1 mt-1" href="<?= $ios; ?>"><i class="fa-solid fa-download"></i> File IPA</a>
 

@@ -28,6 +28,9 @@ echo '<!DOCTYPE html>
 	<link href="'.until::domain("Users/Admin/vendor/owl-carousel/owl.carousel.css").'" rel="stylesheet">
 	<link rel="stylesheet" href="'.until::domain("Users/Admin/vendor/nouislider/nouislider.min.css").'">
 	
+	<!-- Font Awesome 6.5.1 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
 	<!-- Style css -->
     <link href="'.until::domain("Users/Admin/css/style.css").'" rel="stylesheet">
 	
@@ -267,10 +270,10 @@ echo '<!DOCTYPE html>
 								<div class="dropdown">
 									<a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
 									<ul class="dropdown-menu dropdown-menu-end">
-										<li class="dropdown-item"><i class="fa fa-user-circle text-primary me-2"></i> View profile</li>
-										<li class="dropdown-item"><i class="fa fa-users text-primary me-2"></i> Add to btn-close friends</li>
-										<li class="dropdown-item"><i class="fa fa-plus text-primary me-2"></i> Add to group</li>
-										<li class="dropdown-item"><i class="fa fa-ban text-primary me-2"></i> Block</li>
+										<li class="dropdown-item"><i class="fa-solid fa-circle-user text-primary me-2"></i> View profile</li>
+										<li class="dropdown-item"><i class="fa-solid fa-users text-primary me-2"></i> Add to btn-close friends</li>
+										<li class="dropdown-item"><i class="fa-solid fa-plus text-primary me-2"></i> Add to group</li>
+										<li class="dropdown-item"><i class="fa-solid fa-ban text-primary me-2"></i> Block</li>
 									</ul>
 								</div>
 							</div>
@@ -396,7 +399,7 @@ echo '<!DOCTYPE html>
 								<div class="input-group">
 									<textarea class="form-control" placeholder="Type your message..."></textarea>
 									<div class="input-group-append">
-										<button type="button" class="btn btn-primary"><i class="fa fa-location-arrow"></i></button>
+										<button type="button" class="btn btn-primary"><i class="fa-solid fa-location-arrow"></i></button>
 									</div>
 								</div>
 							</div>
@@ -478,7 +481,7 @@ echo '<!DOCTYPE html>
 											</div>
 											<div class="ms-auto">
 												<a href="javascript:void(0);" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa-solid fa-trash-can"></i></a>
 											</div>
 										</div>
 									</li>
@@ -490,7 +493,7 @@ echo '<!DOCTYPE html>
 											</div>
 											<div class="ms-auto">
 												<a href="javascript:void(0);" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa-solid fa-trash-can"></i></a>
 											</div>
 										</div>
 									</li>
@@ -502,7 +505,7 @@ echo '<!DOCTYPE html>
 											</div>
 											<div class="ms-auto">
 												<a href="javascript:void(0);" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa-solid fa-trash-can"></i></a>
 											</div>
 										</div>
 									</li>
@@ -514,7 +517,7 @@ echo '<!DOCTYPE html>
 											</div>
 											<div class="ms-auto">
 												<a href="javascript:void(0);" class="btn btn-primary btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa fa-trash"></i></a>
+												<a href="javascript:void(0);" class="btn btn-danger btn-xs sharp"><i class="fa-solid fa-trash-can"></i></a>
 											</div>
 										</div>
 									</li>
@@ -582,7 +585,7 @@ echo '<!DOCTYPE html>
 											<li>
 												<div class="timeline-panel">
 													<div class="media me-2 media-success">
-														<i class="fa fa-home"></i>
+														<i class="fa-solid fa-house"></i>
 													</div>
 													<div class="media-body">
 														<h6 class="mb-1">Reminder : Treatment Time!</h6>
@@ -613,7 +616,7 @@ echo '<!DOCTYPE html>
 											<li>
 												<div class="timeline-panel">
 													<div class="media me-2 media-primary">
-														<i class="fa fa-home"></i>
+														<i class="fa-solid fa-house"></i>
 													</div>
 													<div class="media-body">
 														<h6 class="mb-1">Reminder : Treatment Time!</h6>

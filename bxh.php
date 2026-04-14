@@ -29,6 +29,15 @@
 							</thead>
 							<tbody>
 								<?php
+								// Lấy toàn bộ template nhiệm vụ để tra cứu nhanh
+								$allSubTasks = [];
+								$resSub = $config->query("SELECT task_main_id, name, max_count FROM task_sub_template ORDER BY task_main_id ASC, keyid ASC");
+								if ($resSub) {
+									while($sRow = $resSub->fetch_assoc()) {
+										$allSubTasks[$sRow['task_main_id']][] = $sRow;
+									}
+								}
+
 								// Truy vấn SQL và hiển thị dữ liệu như ban đầu
 								$query = "SELECT name, gender, player.id, CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 1), '[', -1) AS UNSIGNED) AS nv,
                                       CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 2), ',', -1) AS UNSIGNED) AS nv1,
@@ -37,9 +46,9 @@
                                       INNER JOIN account ON account.id = player.account_id
                                       WHERE account.is_admin = 0 AND account.ban = 0
                                       ORDER BY 
-                                      CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 1), '[', -1) AS UNSIGNED) DESC,
-                                      CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 2), ',', -1) AS UNSIGNED) DESC,
-                                      CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 3), ',', -1) AS UNSIGNED) DESC
+                                      nv DESC,
+                                      nv1 DESC,
+                                      nv2 DESC
                                       LIMIT 30;";
 								$result = $config->query($query);
 								$stt = 1;
@@ -47,10 +56,27 @@
 									echo 'Lỗi truy vấn SQL: ' . $config->error;
 								} elseif ($result->num_rows > 0) {
 									while ($row = $result->fetch_assoc()) {
+										$taskInfo = "Nhiệm vụ " . $row['nv'];
+										if (isset($allSubTasks[$row['nv']])) {
+											$subIndex = $row['nv1'];
+											$subTask = isset($allSubTasks[$row['nv']][$subIndex]) ? $allSubTasks[$row['nv']][$subIndex] : null;
+											if ($subTask) {
+												$taskName = $subTask['name'];
+												// Xử lý placeholder cơ bản nếu có (tùy chọn)
+												$taskName = str_replace(['%1', '%2', '%3', '%4'], ['...', '...', '...', '...'], $taskName);
+												
+												if ($subTask['max_count'] > 0) {
+													$taskInfo = $taskName . ' <span class="badge bg-primary">' . $row['nv2'] . '/' . $subTask['max_count'] . '</span>';
+												} else {
+													$taskInfo = $taskName;
+												}
+											}
+										}
+
 										echo '<tr>
                                     <td>' . $stt . '</td>
-                                    <td>' . $row['name'] . ' [' . $row['id'] . ']</td>
-                                    <td>' . $row['nv'] . ' [' . $row['nv1'] . ',' . $row['nv2'] . ']</td>
+                                    <td>' . $row['name'] . ' <small class="text-muted">#' . $row['id'] . '</small></td>
+                                    <td>' . $taskInfo . '</td>
                                     </tr>';
 										$stt++;
 									}
