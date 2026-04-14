@@ -102,7 +102,7 @@ foreach ($chiSoCanLay as $key => $value) {
 
           <b style="color: #ff0000">
             <?php echo $_SESSION['logger']['username'] ?>
-          </b> <br><i class="fa fa-money"></i>
+          </b> <br><i class="fa-solid fa-coins"></i>
           <b>
             <?= number_format($roww["vnd"]); ?> Coin
           </b>
@@ -227,7 +227,7 @@ foreach ($chiSoCanLay as $key => $value) {
     </div>
     <div style="line-height: 15px;font-size: 12px;padding-right: 5px;margin-bottom: 8px;padding-top: 2px;"
       class="text-center">
-      <span class="text-black" style="vertical-align: middle;"><i class="fa fa-spinner"></i> Thông tin sẽ được cập nhật
+      <span class="text-black" style="vertical-align: middle;"><i class="fa-solid fa-spinner fa-spin"></i> Thông tin sẽ được cập nhật
         ngay sau khi bạn thoát Game</span>
     </div>
   </div>

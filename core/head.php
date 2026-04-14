@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -175,6 +175,34 @@ if ($result->num_rows > 0) {
 
         .blinking-link {
           animation: blinking 0.5s infinite;
+        }
+
+        /* Custom Premium Suggestion Cards */
+        .suggestion {
+            background: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .suggestion:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border-color: #5E17EB !important;
+        }
+        .suggestion .fa-android { color: #3DDC84; }
+        .suggestion .fa-desktop { color: #0078D4; }
+        .suggestion .fa-apple { color: #555555; }
+        .suggestion .fa-java { color: #ED8B00; }
+        
+        .card-title {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .card-title i {
+            font-size: 1.5rem;
         }
       </style>
 
@@ -469,12 +497,12 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
 
     <?php if ($_SESSION['logger']['username']) { ?>
       <a href="/pages/doimatkhau.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-        <i class="fa fa-address-card"></i> Đổi Mật Khẩu </a>
+        <i class="fa-solid fa-address-card"></i> Đổi Mật Khẩu </a>
 
       <!-- <a href="KichHoat" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-check-circle-o"></i> Kích Hoạt </a> -->
       <a href="/pages/profile.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-        <i class="fa fa-user-plus"></i> Nhân vật </a>
+        <i class="fa-solid fa-user"></i> Nhân vật </a>
       <!-- <a href="/checkIPclone.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
         <i class="fa fa-credit-card"></i> Kiểm Tra IP </a>
       <a href="/lichsunap.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
@@ -484,7 +512,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
       <!-- <a href="NhanGift" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
       <i class="fa-solid fa-gift"></i> Nhận Giftcode </a> -->
       <a href="/pages/dangxuat.php" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-        <i class="fa fa-sign-out"></i> Đăng Xuất </a> <br>
+        <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất </a> <br>
 
 
       <?php if (sql::isAdmin()) { ?>
@@ -520,7 +548,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
               <i class="fa-solid fa-ranking-star"></i> Bảng Xếp Hạng</a>
             <a href="/napatm.php" type="submit" class="btn btn-lg btn-dark mx-2 auto-resize"
               style="<?= $nutdangnhapdangkiTO; ?>" name="submit" onmouseover="<?= $onmouseover; ?>"
-              onmouseout="<?= $onmouseout; ?>"><i class="fa fa-money"></i> Nạp Coin</a>
+              onmouseout="<?= $onmouseout; ?>"><i class="fa-solid fa-coins"></i> Nạp Coin</a>
           </div> -->
         <?php } else { ?>
           <div class="align-items-center my-2 d-flex justify-content-center image-container">
@@ -555,7 +583,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
               <p class="card-text">Nhấn vào đây để tải game cho điện thoại Android của bạn.</p>
               <div class="d-flex justify-content-center">
                 <a class="btn btn-info1 me-1 mt-1" href="<?= $adr; ?>">
-                  <i class="fa fa-download"></i> Tải về ngay
+                  <i class="fa-solid fa-download"></i> Tải về ngay
                 </a>
                 <!-- <a class="btn btn-info1 me-1 mt-1" href="<?= $adrpro; ?>">
                   <i class="fa fa-download"></i> Cấu hình cao
@@ -570,7 +598,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
             <div class="card-body text-center">
               <h5 class="card-title"><i class="fa-solid fa-desktop"></i> Phiên Bản PC</h5>
               <p class="card-text">Nhấn vào đây để tải game cho máy tính của bạn.</p>
-              <a class="btn btn-info1 me-1 mt-1" href="<?= $pc; ?>"><i class="fa fa-download"></i>
+              <a class="btn btn-info1 me-1 mt-1" href="<?= $pc; ?>"><i class="fa-solid fa-download"></i>
                 Tải Ngay</a>
             </div>
           </div>
@@ -584,7 +612,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
               <div class="d-flex justify-content-center">
                 <!-- <a class="btn btn-info1 me-1 mt-1" href="<?= $testflight; ?>"><i class="fa fa-download"></i>
                   TestFlight</a> -->
-                <a class="btn btn-info1 me-1 mt-1" href="<?= $ios; ?>"><i class="fa fa-download"></i> File IPA</a>
+                <a class="btn btn-info1 me-1 mt-1" href="<?= $ios; ?>"><i class="fa-solid fa-download"></i> File IPA</a>
 
               </div>
             </div>
@@ -597,7 +625,7 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
               <div class="card-body text-center">
                 <h5 class="card-title"><i class="fa-brands fa-java"></i> Phiên Bản Java</h5>
                 <p class="card-text">Nhấn vào đây để tải giả lập Jar</p>
-                <a class="btn btn-info1 me-1 mt-1" href="<?= $jar; ?>"><i class="fa fa-download"></i>
+                <a class="btn btn-info1 me-1 mt-1" href="<?= $jar; ?>"><i class="fa-solid fa-download"></i>
                   Tải Jar</a>
               </div>
             </div>

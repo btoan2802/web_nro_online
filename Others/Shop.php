@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
 
         <div style="display: flex; justify-content: center; align-items: center;">
             <a href="TRANS_ITEMS" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-                <i class="fa fa-address-card"></i> Lịch sử mua </a>
+                <i class="fa-solid fa-address-card"></i> Lịch sử mua </a>
         </div>
         <div class="card-body">
 

@@ -175,7 +175,7 @@ if (!$player) {
 
             <div style="display: flex; justify-content: center; align-items: center;">
                 <a href="SHOPS" class="btn btn-action m-1 text-white" style="border-radius: 10px;">
-                    <i class="fa fa-address-card"></i> Web Shop </a>
+                    <i class="fa-solid fa-address-card"></i> Web Shop </a>
             </div>
             
             <div class="p-1 mt-1 ibox-content" style="border-radius: 7px; box-shadow: 0px 0px 5px black;">

@@ -19,7 +19,7 @@ $username = $_SESSION['logger']['username'];
     <div style="background: #fff6c4; border-radius: 7px; box-shadow: 0px 2px 5px black;" class="pb-1">
         <div class="text-center col-lg-5 col-md-10" style="margin: auto;padding: 20px;">
 
-            <span style="color:green;font-weight:bold;"><i class="fa fa-wifi"></i> Địa chỉ IP hiện tại
+            <span style="color:green;font-weight:bold;"><i class="fa-solid fa-wifi"></i> Địa chỉ IP hiện tại
                 <br><?php echo $_ip; ?></span>
             <br>
             <table>
@@ -46,7 +46,7 @@ $username = $_SESSION['logger']['username'];
                 </tbody>
             </table>
             <br>
-            <span style="color:red;font-weight:bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Được
+            <span style="color:red;font-weight:bold;"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Được
                 vận hành bởi <?php echo $ten_server ?></span>
         </div>
         <div style="line-height: 15px;font-size: 12px;padding-right: 5px;margin-bottom: 8px;padding-top: 2px;"
