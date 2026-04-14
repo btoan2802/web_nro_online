@@ -120,8 +120,8 @@ function getUserIP() {
 
 #Link download + box chat---------------------------------------------
 $jar = "";
-$pc = "Link";
-$adr = "Link";
+$pc = "/taive/PC.rar";
+$adr = "/taive/NRBT.apk";
 $adrpro = "";
 $ios = "";
 $testflight = "";
