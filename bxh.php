@@ -31,6 +31,9 @@
 							</thead>
 							<tbody>
 								<?php
+								// Thiết lập charset để hiển thị tiếng Việt
+								$config->set_charset("utf8mb4");
+
 								// Lấy toàn bộ template nhiệm vụ chính
 								$mainTasks = [];
 								$resMain = $config->query("SELECT id, NAME FROM task_main_template");
@@ -40,17 +43,16 @@
 									}
 								}
 
-								// Lấy toàn bộ template nhiệm vụ phụ để tra cứu nhanh
+								// Lấy toàn bộ template nhiệm vụ phụ
 								$allSubTasks = [];
 								$resSub = $config->query("SELECT task_main_id, NAME, max_count FROM task_sub_template ORDER BY task_main_id ASC, keyid ASC");
 								if ($resSub) {
 									while($sRow = $resSub->fetch_assoc()) {
-										// Sử dụng NAME (viết hoa) theo schema database
 										$allSubTasks[$sRow['task_main_id']][] = $sRow;
 									}
 								}
 
-								// Truy vấn SQL và hiển thị dữ liệu như ban đầu
+								// Truy vấn SQL Top Nhiệm Vụ
 								$query = "SELECT name, gender, player.id, CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 1), '[', -1) AS UNSIGNED) AS nv,
                                       CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 2), ',', -1) AS UNSIGNED) AS nv1,
                                       CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 3), ',', -1) AS UNSIGNED) AS nv2
