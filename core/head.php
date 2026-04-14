@@ -591,16 +591,18 @@ margin: 5px; /* Tạo khoảng cách giữa các hình ảnh */
           </div>
         </div>
 
-        <div class=" mt-2">
-          <div class="card download-bg suggestion" style="border: 2px solid black; border-radius:30px;">
-            <div class="card-body text-center">
-              <h5 class="card-title"><i class="fa-brands fa-java"></i> Phiên Bản Java</h5>
-              <p class="card-text">Nhấn vào đây để tải giả lập Jar</p>
-              <a class="btn btn-info1 me-1 mt-1" href="<?= $jar; ?>"><i class="fa fa-download"></i>
-                Tải Jar</a>
+        <?php if (!empty($jar) && !empty($jar_available)) : ?>
+          <div class=" mt-2">
+            <div class="card download-bg suggestion" style="border: 2px solid black; border-radius:30px;">
+              <div class="card-body text-center">
+                <h5 class="card-title"><i class="fa-brands fa-java"></i> Phiên Bản Java</h5>
+                <p class="card-text">Nhấn vào đây để tải giả lập Jar</p>
+                <a class="btn btn-info1 me-1 mt-1" href="<?= $jar; ?>"><i class="fa fa-download"></i>
+                  Tải Jar</a>
+              </div>
             </div>
           </div>
-        </div>
+        <?php endif; ?>
 
       </div>
     </div>

@@ -119,7 +119,8 @@ function getUserIP() {
 }
 
 #Link download + box chat---------------------------------------------
-$jar = "/taive/NRBT.jar";
+$jar = "/taive/NROBT.jar";
+$jar_available = file_exists(__DIR__ . '/../taive/NROBT.jar');
 $pc = "/taive/PC.rar";
 $adr = "/taive/NRBT.apk";
 $adrpro = "";
