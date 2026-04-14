@@ -23,17 +23,29 @@
 							<thead>
 								<tr>
 									<th>TOP</th>
-									<th>Tên</th>
+									<th>Nhân Vật</th>
+									<th>ID</th>
 									<th>Nhiệm Vụ</th>
+									<th>Tiến Độ</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
-								// Lấy toàn bộ template nhiệm vụ để tra cứu nhanh
+								// Lấy toàn bộ template nhiệm vụ chính
+								$mainTasks = [];
+								$resMain = $config->query("SELECT id, NAME FROM task_main_template");
+								if ($resMain) {
+									while($mRow = $resMain->fetch_assoc()) {
+										$mainTasks[$mRow['id']] = $mRow['NAME'];
+									}
+								}
+
+								// Lấy toàn bộ template nhiệm vụ phụ để tra cứu nhanh
 								$allSubTasks = [];
-								$resSub = $config->query("SELECT task_main_id, name, max_count FROM task_sub_template ORDER BY task_main_id ASC, keyid ASC");
+								$resSub = $config->query("SELECT task_main_id, NAME, max_count FROM task_sub_template ORDER BY task_main_id ASC, keyid ASC");
 								if ($resSub) {
 									while($sRow = $resSub->fetch_assoc()) {
+										// Sử dụng NAME (viết hoa) theo schema database
 										$allSubTasks[$sRow['task_main_id']][] = $sRow;
 									}
 								}
@@ -56,19 +68,23 @@
 									echo 'Lỗi truy vấn SQL: ' . $config->error;
 								} elseif ($result->num_rows > 0) {
 									while ($row = $result->fetch_assoc()) {
-										$taskInfo = "Nhiệm vụ " . $row['nv'];
+										$taskName = "Nhiệm vụ " . $row['nv'];
+										if (isset($mainTasks[$row['nv']])) {
+											$taskName = $mainTasks[$row['nv']];
+										}
+
+										$progress = "---";
 										if (isset($allSubTasks[$row['nv']])) {
 											$subIndex = $row['nv1'];
 											$subTask = isset($allSubTasks[$row['nv']][$subIndex]) ? $allSubTasks[$row['nv']][$subIndex] : null;
 											if ($subTask) {
-												$taskName = $subTask['name'];
-												// Xử lý placeholder cơ bản nếu có (tùy chọn)
+												$taskName = $subTask['NAME'];
 												$taskName = str_replace(['%1', '%2', '%3', '%4'], ['...', '...', '...', '...'], $taskName);
 												
 												if ($subTask['max_count'] > 0) {
-													$taskInfo = $taskName . ' <span class="badge bg-primary">' . $row['nv2'] . '/' . $subTask['max_count'] . '</span>';
+													$progress = '<span class="badge bg-primary">' . $row['nv2'] . '/' . $subTask['max_count'] . '</span>';
 												} else {
-													$taskInfo = $taskName;
+													$progress = '<span class="badge bg-secondary">Xong</span>';
 												}
 											}
 										}
@@ -76,12 +92,14 @@
 										echo '<tr>
                                     <td>' . $stt . '</td>
                                     <td>' . $row['name'] . ' <small class="text-muted">#' . $row['id'] . '</small></td>
-                                    <td>' . $taskInfo . '</td>
+                                    <td>' . $row['nv'] . '</td>
+                                    <td>' . $taskName . '</td>
+                                    <td>' . $progress . '</td>
                                     </tr>';
 										$stt++;
 									}
 								} else {
-									echo '<tr><td colspan="3" align="center"><span style="font-size:100%;"><< Lịch Sử Trống >></span></td></tr>';
+									echo '<tr><td colspan="5" align="center"><span style="font-size:100%;"><< Lịch Sử Trống >></span></td></tr>';
 								}
 								?>
 							</tbody>
