@@ -44,16 +44,21 @@
 								}
 
 								// Lấy toàn bộ template nhiệm vụ phụ
-								$allSubTasks = [];
-								$resSub = $config->query("SELECT task_main_id, NAME, max_count FROM task_sub_template ORDER BY task_main_id ASC, keyid ASC");
+								$subTasksByOrder = []; // Index theo [main_id][offset]
+								$subTasksByKey = [];  // Index theo [keyid]
+								$resSub = $config->query("SELECT * FROM task_sub_template ORDER BY task_main_id ASC, keyid ASC");
 								if ($resSub) {
 									while($sRow = $resSub->fetch_assoc()) {
-										$allSubTasks[$sRow['task_main_id']][] = $sRow;
+										$subTasksByOrder[$sRow['task_main_id']][] = $sRow;
+										if (isset($sRow['keyid'])) {
+											$subTasksByKey[$sRow['keyid']] = $sRow;
+										}
 									}
 								}
 
 								// Truy vấn SQL Top Nhiệm Vụ
-								$query = "SELECT name, gender, player.id, CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 1), '[', -1) AS UNSIGNED) AS nv,
+								$query = "SELECT name, gender, player.id, 
+                                      CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 1), '[', -1) AS UNSIGNED) AS nv,
                                       CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 2), ',', -1) AS UNSIGNED) AS nv1,
                                       CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(data_task, ',', 3), ',', -1) AS UNSIGNED) AS nv2
                                       FROM player
@@ -66,35 +71,45 @@
                                       LIMIT 30;";
 								$result = $config->query($query);
 								$stt = 1;
+
 								if ($result === false) {
 									echo 'Lỗi truy vấn SQL: ' . $config->error;
 								} elseif ($result->num_rows > 0) {
 									while ($row = $result->fetch_assoc()) {
-										$taskName = "Nhiệm vụ " . $row['nv'];
-										if (isset($mainTasks[$row['nv']])) {
-											$taskName = $mainTasks[$row['nv']];
+										$nv = $row['nv'];
+										$nv1 = $row['nv1'];
+										$nv2 = $row['nv2'];
+
+										// Mặc định lấy tên từ Main Task
+										$taskName = isset($mainTasks[$nv]) ? $mainTasks[$nv] : "Nhiệm vụ " . $nv;
+										$progress = "---";
+
+										// Tìm subTask theo index (nv1) hoặc theo keyid (nv1)
+										$subTask = null;
+										if (isset($subTasksByOrder[$nv][$nv1])) {
+											$subTask = $subTasksByOrder[$nv][$nv1];
+										} elseif (isset($subTasksByKey[$nv1])) {
+											$subTask = $subTasksByKey[$nv1];
 										}
 
-										$progress = "---";
-										if (isset($allSubTasks[$row['nv']])) {
-											$subIndex = $row['nv1'];
-											$subTask = isset($allSubTasks[$row['nv']][$subIndex]) ? $allSubTasks[$row['nv']][$subIndex] : null;
-											if ($subTask) {
-												$taskName = $subTask['NAME'];
-												$taskName = str_replace(['%1', '%2', '%3', '%4'], ['...', '...', '...', '...'], $taskName);
-												
-												if ($subTask['max_count'] > 0) {
-													$progress = '<span class="badge bg-primary">' . $row['nv2'] . '/' . $subTask['max_count'] . '</span>';
-												} else {
-													$progress = '<span class="badge bg-secondary">Xong</span>';
-												}
+										if ($subTask) {
+											$taskName = $subTask['NAME'];
+											// Xử lý placeholder %1, %2, %3, %4
+											$taskName = str_replace(['%1', '%2', '%3', '%4'], ['...', '...', '...', '...'], $taskName);
+											
+											// Sử dụng max_count cho tiến độ
+											$max = isset($subTask['max_count']) ? $subTask['max_count'] : 1;
+											if ($max > 0) {
+												$progress = '<span class="badge bg-primary">' . $nv2 . '/' . $max . '</span>';
+											} else {
+												$progress = '<span class="badge bg-success">Hoàn thành</span>';
 											}
 										}
 
 										echo '<tr>
                                     <td>' . $stt . '</td>
                                     <td>' . $row['name'] . ' <small class="text-muted">#' . $row['id'] . '</small></td>
-                                    <td>' . $row['nv'] . '</td>
+                                    <td>' . $nv . '</td>
                                     <td>' . $taskName . '</td>
                                     <td>' . $progress . '</td>
                                     </tr>';
